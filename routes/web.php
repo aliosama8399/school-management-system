@@ -23,6 +23,7 @@ Route::group(
     {
         return View::make('dashboard');
     });
+    Route::resource('grade', 'GradeController');
 
 });
 
