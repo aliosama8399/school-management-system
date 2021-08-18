@@ -47,13 +47,13 @@ class GradeController extends Controller
 
             $grade = new Grade();
             $grade->name = ['en' => $request->Name_en, 'ar' => $request->Name];
-            $grade->notes=$request->Notes;
+            $grade->notes = $request->Notes;
             $grade->save();
             DB::commit();
             toastr()->success(__('messages.success'));
             return redirect()->route('Grades.index');
 
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -88,8 +88,25 @@ class GradeController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update($id)
+    public function update(StoreGrade $request)
     {
+        try {
+            DB::beginTransaction();
+
+            $grade = Grade::findorfail($request->id);
+            $grade->update([
+
+                $grade->name = ['en' => $request->Name_en, 'ar' => $request->Name],
+            $grade->notes = $request->Notes ,
+            ]);
+            DB::commit();
+            toastr()->success(__('messages.Update'));
+            return redirect()->route('Grades.index');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
 
     }
 
@@ -99,8 +116,11 @@ class GradeController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $grade = Grade::findorfail($request->id)->delete();
+        toastr()->error(__('messages.Delete'));
+        return redirect()->route('Grades.index');
 
     }
 
