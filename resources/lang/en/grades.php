@@ -3,11 +3,12 @@
 return [
 
     'title_page' => 'Grades',
-    'List_Grade' => 'List_Grade',
+    'List_Grade' => 'List Grade',
     'add_Grade' => 'Add Grade',
-    'edit_Grade'=> 'edit_Grade',
-    'delete_Grade'=> 'delete_Grade',
-    'Warning_Grade'=> 'Are Sure Of The Deleting Process ?',
+    'edit_Grade'=> 'Edit Grade',
+    'delete_Grade'=> 'Delete Grade',
+    'delete_checkbox'=> 'Delete Selected Grades',
+    'Warning_Grade'=> 'Are You Sure Of The Deleting Process ?',
     'stage_name_ar' => 'stage_name_ar',
     'stage_name_en' => 'stage_name_en',
     'Notes' => 'Notes',

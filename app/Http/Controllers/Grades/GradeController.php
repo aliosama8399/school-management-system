@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Grades;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGrade;
+use App\Models\Classroom;
 use App\Models\Grade;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -49,10 +50,15 @@ class GradeController extends Controller
         try {
             DB::beginTransaction();
 
-            $grade = new Grade();
-            $grade->name = ['en' => $request->Name_en, 'ar' => $request->Name];
-            $grade->notes = $request->Notes;
-            $grade->save();
+            $List_Classes = $request->List_Classes;
+            foreach ($List_Classes as $List_Class) {
+                $class = new Grade();
+                $class->name = ['en' => $List_Class['Name_en'], 'ar' => $List_Class['Name']];
+                $class->notes = $List_Class['Notes'];
+                $class->save();
+            }
+
+
             DB::commit();
             toastr()->success(__('messages.success'));
             return redirect()->route('Grades.index');
@@ -61,6 +67,7 @@ class GradeController extends Controller
             DB::rollBack();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+
 
     }
 
@@ -124,10 +131,38 @@ class GradeController extends Controller
      */
     public function destroy(Request $request)
     {
-        $grade = Grade::findorfail($request->id)->delete();
+        $grade = Classroom::where('Grade_id', $request->id)->pluck('Grade_id');
+        if ($grade->count() == 0) {
+
+            $grade = Grade::findorfail($request->id)->delete();
+            toastr()->error(__('messages.Delete'));
+            return redirect()->route('Grades.index');
+        } else {
+            toastr()->error(__('messages.error'));
+            return redirect()->route('Grades.index');
+
+        }
+    }
+
+    public function delete_all_grades(Request $request)
+    {
+        $delete_all_ids = explode(",", $request->delete_all_id);
+
+        foreach ($delete_all_ids as $delete_all_id){
+         $grade = Classroom::where('Grade_id', $delete_all_id)->pluck('Grade_id');
+
+        if ($grade->count() == 0) {
+            Grade::where('id', $delete_all_id)->Delete();
+        }
+
+        else {
+            toastr()->error(__('messages.error'));
+            return redirect()->route('Grades.index');
+        }
+        }
+
         toastr()->error(__('messages.Delete'));
         return redirect()->route('Grades.index');
-
     }
 
 }

@@ -7,6 +7,8 @@ return [
     'add_class' => 'add class',
     'edit_class'=> 'Edit Row',
     'delete_class'=> 'Delete Row',
+    'delete_checkbox'=> 'Delete Selected',
+    'Search_By_Grade'=> 'Search By Grade Name',
     'Warning_class'=> 'Are you sure you want delete ?',
     'submit' => 'submit',
     'Name_class'=>'Name_class_en',
