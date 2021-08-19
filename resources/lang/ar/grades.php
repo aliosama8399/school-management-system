@@ -7,6 +7,8 @@ return [
     'add_Grade' => 'اضافة مرحلة',
     'edit_Grade'=> 'تعديل مرحلة',
     'delete_Grade'=> 'حذف مرحلة',
+    'delete_checkbox' => 'حذف المراحل المختارة',
+
     'Warning_Grade'=> 'هل انت متاكد من عملية الحذف ؟',
     'stage_name_ar' => 'اسم المرحلة بالعربية',
     'stage_name_en' => 'اسم المرحلة بالانجليزية',

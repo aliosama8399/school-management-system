@@ -27,6 +27,15 @@ class ClassroomController extends Controller
 
     }
 
+    public function Filter_Classes(Request $request)
+    {
+        $grades = Grade::all();
+        $search=Classroom::select('*')->where('Grade_id','=',$request->Grade_id)->get();
+        return view('pages.My_Classes.My_Classes', compact('grades'))->withDetails($search);
+
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -129,6 +138,15 @@ class ClassroomController extends Controller
         $class = Classroom::findorfail($request->id)->delete();
         toastr()->error(__('messages.Delete'));
         return redirect()->route('Classrooms.index');
+    }
+
+    public function delete_all(Request $request)
+    {
+        $delete_all_id = explode(",", $request->delete_all_id);
+        Classroom::whereIn('id', $delete_all_id)->Delete();
+        toastr()->error(__('messages.Delete'));
+        return redirect()->route('Classrooms.index');
+
     }
 
 }
