@@ -28,14 +28,9 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
     ], function () { //...
 
-//    Route::get('/', function () {
-//        return view('dashboard');
-//    });
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-//    Route::group(['namespace' => 'Grades'],
-//        function () {
-            Route::resource('Grades', \App\Http\Controllers\Grades\GradeController::class);
-//        });
+    Route::resource('Grades', \App\Http\Controllers\Grades\GradeController::class);
+    Route::resource('Classrooms', \App\Http\Controllers\Classrooms\ClassroomController::class);
 
 });
 

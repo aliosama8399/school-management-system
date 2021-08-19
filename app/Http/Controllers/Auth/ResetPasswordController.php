@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Grades\Auth;
+namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Grades\Controller;
+use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
