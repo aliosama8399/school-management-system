@@ -1,27 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Grades;
+namespace App\Http\Controllers\Classrooms;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreGrade;
+use App\Http\Requests\ClassroomRequest;
+use App\Models\Classroom;
 use App\Models\Grade;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
-class GradeController extends Controller
+class ClassroomController extends Controller
 {
 
     /**
      * Display a listing of the resource.
      *
-     * @return Response|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Response
      */
     public function index()
     {
+        $classes = Classroom::all();
         $grades = Grade::all();
-        return view('pages.grades.grades', compact('grades'));
+
+        return view('pages.My_Classes.My_Classes', compact('grades', 'classes'));
+
     }
 
     /**
@@ -32,7 +35,6 @@ class GradeController extends Controller
     public function create()
     {
 
-
     }
 
     /**
@@ -40,22 +42,24 @@ class GradeController extends Controller
      *
      * @return Response
      */
-    public function store(StoreGrade $request)
+    public function store(ClassroomRequest $request)
     {
-//        if (Grade::where('name->ar', $request->Name)->orWhere('name->en', $request->Name_en)->exists()) {
-//            return redirect()->back()->withErrors(__('grades.exist'));
-//
-//        }
+
         try {
             DB::beginTransaction();
 
-            $grade = new Grade();
-            $grade->name = ['en' => $request->Name_en, 'ar' => $request->Name];
-            $grade->notes = $request->Notes;
-            $grade->save();
+            $List_Classes = $request->List_Classes;
+            foreach ($List_Classes as $List_Class) {
+                $class = new Classroom();
+                $class->Name_Class = ['en' => $List_Class['Name_class_en'], 'ar' => $List_Class['Name']];
+                $class->Grade_id = $List_Class['Grade_id'];
+                $class->save();
+            }
+
+
             DB::commit();
             toastr()->success(__('messages.success'));
-            return redirect()->route('Grades.index');
+            return redirect()->route('Classrooms.index');
 
         } catch (\Exception $e) {
             DB::rollBack();
@@ -92,22 +96,20 @@ class GradeController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(StoreGrade $request)
+    public function update(ClassroomRequest $request)
     {
-
-
         try {
             DB::beginTransaction();
 
-            $grade = Grade::findorfail($request->id);
-            $grade->update([
+            $class = Classroom::findorfail($request->id);
+            $class->update([
 
-                $grade->name = ['en' => $request->Name_en, 'ar' => $request->Name],
-                $grade->notes = $request->Notes,
+                $class->Name_Class = ['en' => $request->Name_en, 'ar' => $request->Name],
+                $class->Grade_id = $request->Grade_id,
             ]);
             DB::commit();
             toastr()->success(__('messages.Update'));
-            return redirect()->route('Grades.index');
+            return redirect()->route('Classrooms.index');
 
         } catch (\Exception $e) {
             DB::rollBack();
@@ -124,10 +126,9 @@ class GradeController extends Controller
      */
     public function destroy(Request $request)
     {
-        $grade = Grade::findorfail($request->id)->delete();
+        $class = Classroom::findorfail($request->id)->delete();
         toastr()->error(__('messages.Delete'));
-        return redirect()->route('Grades.index');
-
+        return redirect()->route('Classrooms.index');
     }
 
 }
