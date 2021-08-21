@@ -2,13 +2,14 @@
 @section('css')
     @livewireStyles
 @section('title')
-    empty
+    {{__('sidebar.Add_Parent')}}
+
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    empty
+    {{__('sidebar.Add_Parent')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -18,9 +19,8 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                asdsad
-                <livewire:counter />
-                <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+
+                <livewire:add-parent />
             </div>
         </div>
     </div>
