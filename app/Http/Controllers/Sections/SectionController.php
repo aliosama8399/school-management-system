@@ -51,8 +51,9 @@ class SectionController extends Controller
      *
      * @return Response
      */
-    public function store(StoreSections $request)
+    public function store(Request $request)
     {
+
 
 //
 //        try {
@@ -64,6 +65,8 @@ class SectionController extends Controller
 //                $Sections->Name_Section = ['en' => $List_Class['Name_Section_En'], 'ar' => $List_Class['Name_Section_Ar']];
 //                $Sections->Grade_id = $List_Class['Grade_id'];
 //                $Sections->Class_id = $List_Class['Class_id'];
+//                  $Sections->Status = 1;
+
 //                $Sections->save();
 //            }
 //
