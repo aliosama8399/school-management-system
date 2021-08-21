@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ClassroomRequest;
 use App\Models\Classroom;
 use App\Models\Grade;
+use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,7 @@ class ClassroomController extends Controller
     public function Filter_Classes(Request $request)
     {
         $grades = Grade::all();
-        $search=Classroom::select('*')->where('Grade_id','=',$request->Grade_id)->get();
+        $search = Classroom::select('*')->where('Grade_id', '=', $request->Grade_id)->get();
         return view('pages.My_Classes.My_Classes', compact('grades'))->withDetails($search);
 
 
@@ -135,15 +136,31 @@ class ClassroomController extends Controller
      */
     public function destroy(Request $request)
     {
-        $class = Classroom::findorfail($request->id)->delete();
-        toastr()->error(__('messages.Delete'));
-        return redirect()->route('Classrooms.index');
+        $class = Section::where('Class_id', $request->id)->pluck('Class_id');
+        if ($class->count() == 0) {
+            $class = Classroom::findorfail($request->id)->delete();
+            toastr()->error(__('messages.Delete'));
+            return redirect()->route('Classrooms.index');
+        } else {
+            toastr()->error(__('messages.error'));
+            return redirect()->route('Classrooms.index');
+
+        }
     }
 
     public function delete_all(Request $request)
     {
-        $delete_all_id = explode(",", $request->delete_all_id);
-        Classroom::whereIn('id', $delete_all_id)->Delete();
+        $delete_all_ids = explode(",", $request->delete_all_id);
+        foreach ($delete_all_ids as $delete_all_id) {
+            $class = Section::where('Class_id', $delete_all_id)->pluck('Class_id');
+            if ($class->count() == 0) {
+                Classroom::where('id', $delete_all_id)->Delete();
+            } else {
+                toastr()->error(__('messages.error'));
+                return redirect()->route('Classrooms.index');
+            }
+        }
+//        Classroom::whereIn('id', $delete_all_id)->Delete();
         toastr()->error(__('messages.Delete'));
         return redirect()->route('Classrooms.index');
 
