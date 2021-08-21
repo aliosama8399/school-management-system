@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     'Dashboard' => 'الرئيسية',
     'Dashboard_page' => 'لوحة التحكم',
     'Main_title' => 'برنامج على اسامة لادارة المدارس',
@@ -10,11 +8,14 @@ return [
     'Grades' => 'المراحل الدراسية',
     'Grades_list' => 'قائمة المراحل الدراسية',
     'List_sections' => 'قائمة الاقسام الدراسية',
+    'List_classes'=>'قائمة الفصول الدراسية',
     'classes' => 'الفصول',
     'sections' => 'الاقسام',
     'students' => 'الطلاب',
     'Teachers' => 'المعلمين',
     'Parents' => 'اولياء الامور',
+    'List_Parents'=>'قائمة اولياء الامور',
+    'Add_Parent'=>'اضافة ولي امر',
     'Accounts' => 'الحسابات',
     'Attendance' => 'الحضور والغياب',
     'Exams' => 'الامتحانات',
