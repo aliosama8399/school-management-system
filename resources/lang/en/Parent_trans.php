@@ -26,6 +26,8 @@ return [
     'Passport_ID_Mother' => 'Passport Number',
     'Phone_Mother' => 'Telephone Number',
     'Address_Mother' => 'Address Mother',
+    'Attachments' => 'Attachments',
+
     'Next' => 'Next',
     'Choose' => 'Choose',
     'Back' => 'Back',
