@@ -9,6 +9,7 @@ use App\Models\Religion;
 use App\Models\Type_Blood;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -16,7 +17,7 @@ class AddParent extends Component
 {
     use WithFileUploads;
 
-    public $catchError = '', $updateMode = false, $photos;
+    public $catchError = '', $updateMode = false, $photos, $show_table = true, $Parent_id;
     public $successMessage = '';
     public $currentStep = 1,
 
@@ -41,8 +42,21 @@ class AddParent extends Component
             'Nationalities' => Nationality::all(),
             'Type_Bloods' => Type_Blood::all(),
             'Religions' => Religion::all(),
+            'my_parents' => My_Parent::all(),
+
         ]);
 
+    }
+
+    public function showformadd()
+    {
+        $this->show_table = false;
+    }
+
+    public function showformshow()
+    {
+//        $this->show_table = true;
+        return redirect()->to('/add_parent');
     }
 
     public function updated($propertyName)
@@ -156,6 +170,123 @@ class AddParent extends Component
 
     }
 
+    public function edit($id)
+    {
+        $this->show_table = false;
+        $this->updateMode = true;
+        $My_Parent = My_Parent::where('id', $id)->first();
+        $this->Parent_id = $id;
+        $this->Email = $My_Parent->Email;
+        $this->Password = $My_Parent->Password;
+        $this->Name_Father = $My_Parent->getTranslation('Name_Father', 'ar');
+        $this->Name_Father_en = $My_Parent->getTranslation('Name_Father', 'en');
+        $this->Job_Father = $My_Parent->getTranslation('Job_Father', 'ar');;
+        $this->Job_Father_en = $My_Parent->getTranslation('Job_Father', 'en');
+        $this->National_ID_Father = $My_Parent->National_ID_Father;
+        $this->Passport_ID_Father = $My_Parent->Passport_ID_Father;
+        $this->Phone_Father = $My_Parent->Phone_Father;
+        $this->Nationality_Father_id = $My_Parent->Nationality_Father_id;
+        $this->Blood_Type_Father_id = $My_Parent->Blood_Type_Father_id;
+        $this->Address_Father = $My_Parent->Address_Father;
+        $this->Religion_Father_id = $My_Parent->Religion_Father_id;
+
+        $this->Name_Mother = $My_Parent->getTranslation('Name_Mother', 'ar');
+        $this->Name_Mother_en = $My_Parent->getTranslation('Name_Father', 'en');
+        $this->Job_Mother = $My_Parent->getTranslation('Job_Mother', 'ar');;
+        $this->Job_Mother_en = $My_Parent->getTranslation('Job_Mother', 'en');
+        $this->National_ID_Mother = $My_Parent->National_ID_Mother;
+        $this->Passport_ID_Mother = $My_Parent->Passport_ID_Mother;
+        $this->Phone_Mother = $My_Parent->Phone_Mother;
+        $this->Nationality_Mother_id = $My_Parent->Nationality_Mother_id;
+        $this->Blood_Type_Mother_id = $My_Parent->Blood_Type_Mother_id;
+        $this->Address_Mother = $My_Parent->Address_Mother;
+        $this->Religion_Mother_id = $My_Parent->Religion_Mother_id;
+    }
+
+    //firstStepSubmit
+    public function firstStepSubmit_edit()
+    {
+        $this->updateMode = true;
+        $this->currentStep = 2;
+
+    }
+
+    //secondStepSubmit_edit
+    public function secondStepSubmit_edit()
+    {
+        $this->updateMode = true;
+        $this->currentStep = 3;
+
+    }
+
+    public function submitForm_edit()
+    {
+
+        if ($this->Parent_id) {
+            $parent = My_Parent::find($this->Parent_id);
+            $parent->update([
+                'Email' => $this->Email,
+                'Password' =>  Hash::make($this->Password),
+                'Passport_ID_Father' => $this->Passport_ID_Father,
+                'National_ID_Father' => $this->National_ID_Father,
+                'Passport_ID_Mother' => $this->Passport_ID_Mother,
+                'National_ID_Mother' => $this->National_ID_Mother,
+                'Phone_Father' => $this->Phone_Father,
+                'Job_Father' => $this->Job_Father,
+                'Nationality_Father_id' => $this->Nationality_Father_id,
+                'Blood_Type_Father_id' => $this->Blood_Type_Father_id,
+                'Religion_Father_id' => $this->Religion_Father_id,
+                'Address_Father' => $this->Address_Father,
+                'Name_Father' => $this->Name_Father,
+                'Name_Mother' => $this->Name_Mother,
+                'Phone_Mother' => $this->Phone_Mother,
+                'Job_Mother' => $this->Job_Mother,
+                'Nationality_Mother_id' => $this->Nationality_Mother_id,
+                'Blood_Type_Mother_id' => $this->Blood_Type_Mother_id,
+                'Religion_Mother_id' => $this->Religion_Mother_id,
+                'Address_Mother' => $this->Address_Mother,
+
+            ]);
+
+        }
+        if (!empty($this->photos)) {
+            foreach ($this->photos as $photo) {
+                $photo->storeAs($this->National_ID_Father, $photo->getClientOriginalName(), $disk = 'parent_attachments');
+                ParentAttachment::create([
+                    'file_name' => $photo->getClientOriginalName(),
+                    'parent_id' => $this->Parent_id,
+                ]);
+            }
+        }
+        $this->successMessage = trans('messages.update');
+
+        return redirect()->to('/add_parent');
+    }
+
+    public function delete($id)
+    {
+        try {
+            $parent = My_Parent::findOrFail($id);
+            $photos = ParentAttachment::all();
+            foreach ($photos as $p) {
+
+                if ($p->parent_id == $parent->id) {
+//                    Storage::disk('parent_attachments')->delete('parent_attachments'.$parent->National_ID_Father.'/'.$p->file_name);
+//                    $path='storage/app/parent_attachments/'.$parent->National_ID_Father.'/'.$p->file_name;
+//                    unlink($path);
+                    $p->delete();
+//                    return redirect()->to('/add_parent');
+                }
+            }
+            $parent->delete();
+            return redirect()->to('/add_parent');
+            $this->catchError = trans('messages.delete');
+
+        } catch (\Exception $e) {
+            $this->catchError = $e->getMessage();
+
+        }
+    }
 
     //clearForm
     public function clearForm()
