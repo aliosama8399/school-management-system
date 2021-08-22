@@ -19,7 +19,7 @@ class CreateParentAttachmentsTable extends Migration
             $table->bigInteger('parent_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('parent_id')->references('id')->on('my__parents');
+            $table->foreign('parent_id')->references('id')->on('my__parents')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

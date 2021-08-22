@@ -14,8 +14,12 @@
         </div>
     @endif
 
+    @if($show_table)
+        @include('livewire.Parent_Table')
+    @else
+        <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="showformshow" type="button">{{ trans('Parent_trans.show_parent') }}</button><br><br>
 
-    <div class="stepwizard">
+        <div class="stepwizard">
         <div class="stepwizard-row setup-panel">
             <div class="stepwizard-step">
                 <a href="#step-1" type="button"
@@ -39,6 +43,8 @@
     @include('livewire.Father_Form')
 
     @include('livewire.Mother_Form')
+
+
 
 
     <div class="row setup-content {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
@@ -76,5 +82,6 @@
 
     </div>
 
+    @endif
 
 </div>

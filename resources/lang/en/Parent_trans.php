@@ -1,7 +1,9 @@
 <?php
 
 return [
-
+    'add_parent' => 'Add parent',
+    'edit_parent' => 'Edit parent',
+    'show_parent' => 'Show Parents',
     'Step1' => 'Father information',
     'Step2' => 'Mother information',
     'Step3' => 'Confirm information',
@@ -33,6 +35,7 @@ return [
     'Back' => 'Back',
     'Finish' => 'Finish',
     'confirm' => 'Are you sure you want to confirm',
+    'Processes' => 'Processes',
 
 
 ];
