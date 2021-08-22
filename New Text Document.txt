@@ -1,8 +1,8 @@
-        <!--اضافة قسم جديد -->
+  <!--اضافة قسم جديد -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
-                        <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;"
@@ -17,23 +17,23 @@
                                     <form action="{{ route('Sections.store') }}" method="POST">
                                         {{ csrf_field() }}
 
-                                            <div class="repeater">
-                                                <div data-repeater-list="List_Classes">
-                                                    <div data-repeater-item>
-                                                        <div class="row">
-                                            <div class="col">
-                                                <input type="text" name="Name_Section_Ar" class="form-control"
-                                                       placeholder="{{ trans('Sections_trans.Section_name_ar') }}">
-                                            </div>
+                                        <div class="repeater">
+                                            <div data-repeater-list="List_Classes">
+                                                <div data-repeater-item>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <input type="text" name="Name_Section_Ar" class="form-control"
+                                                                   placeholder="{{ trans('Sections_trans.Section_name_ar') }}">
+                                                        </div>
 
-                                            <div class="col">
-                                                <input type="text" name="Name_Section_En" class="form-control"
-                                                       placeholder="{{ trans('Sections_trans.Section_name_en') }}">
-                                            </div>
+                                                        <div class="col">
+                                                            <input type="text" name="Name_Section_En" class="form-control"
+                                                                   placeholder="{{ trans('Sections_trans.Section_name_en') }}">
+                                                        </div>
                                                         <div class="col">
                                                             <label for="inputName"
                                                                    class="control-label">{{ trans('Sections_trans.Name_Grade') }}</label>
-                                                            <select name="Grade_id" class="custom-select"
+                                                            <select name="Grade_id" id="Grade_id" class="custom-select"
                                                                     onchange="console.log($(this).val())">
                                                                 <!--placeholder-->
                                                                 <option value="" selected
@@ -45,12 +45,12 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
-                                                        <br>
+
 
                                                         <div class="col">
                                                             <label for="inputName"
                                                                    class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>
-                                                            <select name="Class_id" class="custom-select">
+                                                            <select name="Class_id" id="Class_id" class="custom-select">
 
                                                             </select>
                                                         </div>
@@ -64,33 +64,56 @@
                                                                    value="{{ trans('My_Classes_trans.delete_row') }}"/>
                                                         </div>
 
-                                        </div>
-
-
-
-                                </div>
-
-
-                                                </div>
-                                                <div class="row mt-20">
-                                                    <div class="col-12">
-                                                        <input class="button" data-repeater-create type="button"
-                                                               value="{{ trans('My_Classes_trans.add_row') }}"/>
                                                     </div>
 
+
+
                                                 </div>
+
+
+                                            </div>
+                                            <div class="row mt-20">
+                                                <div class="col-12">
+                                                    <input class="button" data-repeater-create type="button"
+                                                           value="{{ trans('My_Classes_trans.add_row') }}"/>
+                                                </div>
+
+                                            </div>
                                         </div>
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">{{ trans('Sections_trans.Close') }}</button>
-                                    <button type="submit"
-                                            class="btn btn-danger">{{ trans('Sections_trans.submit') }}</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">{{ trans('Sections_trans.Close') }}</button>
+                                            <button type="submit"
+                                                    class="btn btn-danger">{{ trans('Sections_trans.submit') }}</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                </form>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </div>
+                    </div>
+  <script>
+                $(document).ready(function () {
+                    $("[data-repeater-list='List_Classes'] [name='Grade_id']").on('change', function () {
+                        var Grade_id = $(this).val();
+
+                        if (Grade_id) {
+                            $.ajax({
+                                url: "{{ URL::to('classes') }}/" + Grade_id,
+                                type: "GET",
+                                dataType: "json",
+                                success: function (data) {
+                                    $("[data-repeater-list='List_Classes'] [id='Class_id']").empty();
+                                    $.each(data, function (key, value) {
+                                        $('[data-repeater-list="List_Classes"] [id="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
+                                    });
+                                },
+                            });
+                        } else {
+                            console.log('AJAX load did not work');
+                        }
+                    });
+                });
+
+            </script>
