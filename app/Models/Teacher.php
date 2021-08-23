@@ -10,8 +10,9 @@ class Teacher extends Model
 {
     use HasFactory;
     use HasTranslations;
+
     public $translatable = ['Name'];
-    protected $guarded=[];
+    protected $guarded = [];
 
     // علاقة بين المعلمين والتخصصات لجلب اسم التخصص
     public function specializations()
@@ -23,5 +24,11 @@ class Teacher extends Model
     public function genders()
     {
         return $this->belongsTo('App\Models\Gender', 'Gender_id');
+    }
+
+//علاقة المعلمين مع الاقسام
+    public function Sections()
+    {
+        return $this->belongsToMany('App\Models\Section','teacher_section');
     }
 }

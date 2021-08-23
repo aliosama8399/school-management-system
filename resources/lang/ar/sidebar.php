@@ -9,7 +9,7 @@ return [
     'Grades_list' => 'قائمة المراحل الدراسية',
     'List_sections' => 'قائمة الاقسام الدراسية',
     'List_classes'=>'قائمة الفصول الدراسية',
-    'classes' => 'الفصول',
+    'classes' => 'الصفوف',
     'sections' => 'الاقسام',
     'students' => 'الطلاب',
     'Teachers' => 'المعلمين',
