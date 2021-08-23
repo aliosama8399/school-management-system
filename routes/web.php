@@ -40,6 +40,9 @@ Route::group(
     Route::get('/classes/{id}', [App\Http\Controllers\Sections\SectionController::class, 'getclasses'])->name('getclasses');
 ################################################################################################################################################################
     Route::view('add_parent','livewire.show_Form');
-});
+#############################################################################################################################################################
+    Route::resource('Teachers', \App\Http\Controllers\Teachers\TeacherController::class);
+
+    });
 
 
