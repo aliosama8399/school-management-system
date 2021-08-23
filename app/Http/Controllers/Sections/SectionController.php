@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSections;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,8 @@ class SectionController extends Controller
 
         $list_Grades = Grade::all();
 
-        return view('pages.Sections.Sections', compact('grades', 'grades', 'list_Grades'));
+        $teachers=Teacher::all();
+        return view('pages.Sections.Sections', compact('grades', 'grades', 'list_Grades','teachers'));
 
 
     }
@@ -91,7 +93,7 @@ class SectionController extends Controller
             $Sections->Class_id = $request->Class_id;
             $Sections->Status = 1;
             $Sections->save();
-
+            $Sections->teachers()->attach($request->teacher_id);
 
             DB::commit();
             toastr()->success(__('messages.success'));
@@ -146,7 +148,16 @@ class SectionController extends Controller
                 } else {
                     $Sections->Status = 2;
                 }
-             $Sections->save();
+
+            // update pivot tABLE
+            if (isset($request->teacher_id)) {
+                $Sections->teachers()->sync($request->teacher_id);
+            } else {
+                $Sections->teachers()->sync(array());
+            }
+
+
+            $Sections->save();
 
 
 
