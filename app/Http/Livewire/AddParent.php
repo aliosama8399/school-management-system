@@ -266,21 +266,21 @@ class AddParent extends Component
     public function delete($id)
     {
         try {
-            $parent = My_Parent::findOrFail($id);
-            $photos = ParentAttachment::all();
-            foreach ($photos as $p) {
-
-                if ($p->parent_id == $parent->id) {
-//                    Storage::disk('parent_attachments')->delete('parent_attachments'.$parent->National_ID_Father.'/'.$p->file_name);
-//                    $path='storage/app/parent_attachments/'.$parent->National_ID_Father.'/'.$p->file_name;
-//                    unlink($path);
-                    $p->delete();
-//                    return redirect()->to('/add_parent');
-                }
-            }
-            $parent->delete();
-            return redirect()->to('/add_parent');
+            My_Parent::findOrFail($id)->delete();
+//            $photos = ParentAttachment::all();
+//            foreach ($photos as $p) {
+//
+//                if ($p->parent_id == $parent->id) {
+////                    Storage::disk('parent_attachments')->delete('parent_attachments'.$parent->National_ID_Father.'/'.$p->file_name);
+////                    $path='storage/app/parent_attachments/'.$parent->National_ID_Father.'/'.$p->file_name;
+////                    unlink($path);
+//                    $p->delete();
+////                    return redirect()->to('/add_parent');
+//                }
+//            }
+//            $parent->delete();
             $this->catchError = trans('messages.delete');
+            return redirect()->to('/add_parent');
 
         } catch (\Exception $e) {
             $this->catchError = $e->getMessage();

@@ -17,6 +17,7 @@ return [
     'Students_upgrade'=>'Students Upgrade',
     'Graduate_students'=>'Graduate Students',
     'Teachers' => 'Teachers',
+    'List_teachers' => 'Teachers List' ,
     'Parents' => 'Parents',
     'Add_Parent'=>'Add Parent',
     'List_Parents'=>'List Parents',
