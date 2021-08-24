@@ -12,6 +12,8 @@ return [
     'classes' => 'الصفوف',
     'sections' => 'الاقسام',
     'students' => 'الطلاب',
+    'add_student' => 'اضافة طالب حديد',
+    'List_students' => 'قائمة الطلاب',
     'Teachers' => 'المعلمين',
     'List_teachers' => 'قائمة المعلمين',
     'Parents' => 'اولياء الامور',
