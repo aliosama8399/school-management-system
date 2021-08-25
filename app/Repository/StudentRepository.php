@@ -7,14 +7,15 @@ use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\Image;
 use App\Models\My_Parent;
-use App\Models\Nationalitie;
 use App\Models\Nationality;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Type_Blood;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Filesystem\Filesystem;
 
 
 class StudentRepository implements StudentRepositoryInterface
@@ -69,7 +70,10 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function Delete_Student($request)
     {
-
+        $name = Student::findorfail($request->id);
+        $name = $name->getTranslation('name', 'ar');
+        File::deleteDirectory(public_path('attachments/students/'.$name));
+        $image = Image::where('imageable_id', $request->id)->delete();
         Student::destroy($request->id);
         toastr()->error(trans('messages.Delete'));
         return redirect()->route('Students.index');
@@ -129,7 +133,7 @@ class StudentRepository implements StudentRepositoryInterface
             if ($request->hasfile('photos')) {
                 foreach ($request->file('photos') as $file) {
                     $name = $file->getClientOriginalName();
-                    $file->storeAs('attachments/students/' . $students->name, $file->getClientOriginalName(), 'upload_attachments');
+                    $file->storeAs('attachments/students/' . $request->name_ar, $file->getClientOriginalName(), 'upload_attachments');
 
                     // insert in image_table
                     $images = new Image();
@@ -149,46 +153,45 @@ class StudentRepository implements StudentRepositoryInterface
         }
 
     }
+
     public function Show_Student($id)
     {
         $Student = Student::findorfail($id);
-        return view('pages.Students.show',compact('Student'));
+        return view('pages.Students.show', compact('Student'));
     }
-
 
 
     public function Upload_attachment($request)
     {
-        foreach($request->file('photos') as $file)
-        {
+        foreach ($request->file('photos') as $file) {
             $name = $file->getClientOriginalName();
-            $file->storeAs('attachments/students/'.$request->student_name, $file->getClientOriginalName(),'upload_attachments');
+            $file->storeAs('attachments/students/' . $request->student_name, $file->getClientOriginalName(), 'upload_attachments');
 
             // insert in image_table
-            $images= new image();
-            $images->filename=$name;
+            $images = new image();
+            $images->filename = $name;
             $images->imageable_id = $request->student_id;
             $images->imageable_type = 'App\Models\Student';
             $images->save();
         }
         toastr()->success(trans('messages.success'));
-        return redirect()->route('Students.show',$request->student_id);
+        return redirect()->route('Students.show', $request->student_id);
     }
 
     public function Download_attachment($studentsname, $filename)
     {
-        return response()->download(public_path('attachments/students/'.$studentsname.'/'.$filename));
+        return response()->download(public_path('attachments/students/' . $studentsname . '/' . $filename));
     }
 
     public function Delete_attachment($request)
     {
         // Delete img in server disk
-        Storage::disk('upload_attachments')->delete('attachments/students/'.$request->student_name.'/'.$request->filename);
+        Storage::disk('upload_attachments')->delete('attachments/students/' . $request->student_name . '/' . $request->filename);
 
         // Delete in data
-        image::where('id',$request->id)->where('filename',$request->filename)->delete();
+        image::where('id', $request->id)->where('filename', $request->filename)->delete();
         toastr()->error(trans('messages.Delete'));
-        return redirect()->route('Students.show',$request->student_id);
+        return redirect()->route('Students.show', $request->student_id);
     }
 
 

@@ -14,6 +14,8 @@ return [
     'students' => 'الطلاب',
     'add_student' => 'اضافة طالب حديد',
     'List_students' => 'قائمة الطلاب',
+    'Students_Promotions'=>'ترقية الطلاب',
+
     'Teachers' => 'المعلمين',
     'List_teachers' => 'قائمة المعلمين',
     'Parents' => 'اولياء الامور',

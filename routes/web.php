@@ -50,6 +50,7 @@ Route::group(
     Route::post('Upload_attachment', [App\Http\Controllers\Students\StudentController::class, 'Upload_attachment'])->name('Upload_attachment');
     Route::post('Delete_attachment', [App\Http\Controllers\Students\StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
 
+    Route::resource('Promotion', \App\Http\Controllers\Students\PromotionController::class);
 
 
 });
