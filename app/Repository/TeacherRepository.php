@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Gender;
 use App\Models\Specialization;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class TeacherRepository implements TeacherRepositoryInterface
@@ -27,6 +28,7 @@ class TeacherRepository implements TeacherRepositoryInterface
     public function StoreTeachers($request){
 
         try {
+            DB::beginTransaction();
             $Teachers = new Teacher();
             $Teachers->Email = $request->Email;
             $Teachers->Password =  Hash::make($request->Password);
@@ -36,10 +38,12 @@ class TeacherRepository implements TeacherRepositoryInterface
             $Teachers->Joining_Date = $request->Joining_Date;
             $Teachers->Address = $request->Address;
             $Teachers->save();
+            DB::commit();
             toastr()->success(trans('messages.success'));
             return redirect()->route('Teachers.create');
         }
         catch (Exception $e) {
+            DB::rollBack();
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
 
@@ -55,6 +59,7 @@ class TeacherRepository implements TeacherRepositoryInterface
     public function UpdateTeachers($request)
     {
         try {
+            DB::beginTransaction();
             $Teachers = Teacher::findOrFail($request->id);
             $Teachers->Email = $request->Email;
             $Teachers->Password =  Hash::make($request->Password);
@@ -64,10 +69,12 @@ class TeacherRepository implements TeacherRepositoryInterface
             $Teachers->Joining_Date = $request->Joining_Date;
             $Teachers->Address = $request->Address;
             $Teachers->save();
+            DB::commit();
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Teachers.index');
         }
         catch (Exception $e) {
+            DB::rollBack();
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }

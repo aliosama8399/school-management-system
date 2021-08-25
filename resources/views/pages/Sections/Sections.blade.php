@@ -42,7 +42,7 @@
                             @foreach ($grades as $Grade)
 
                                 <div class="acd-group">
-                                    <a href="#" class="acd-heading">{{ $Grade->Name }}</a>
+                                    <a href="#" class="acd-heading">{{ $Grade->name }}</a>
                                     <div class="acd-des">
 
                                         <div class="row">
@@ -159,12 +159,12 @@
                                                                                                 <!--placeholder-->
                                                                                                 <option
                                                                                                     value="{{ $Grade->id }}">
-                                                                                                    {{ $Grade->Name }}
+                                                                                                    {{ $Grade->name }}
                                                                                                 </option>
                                                                                                 @foreach ($list_Grades as $list_Grade)
                                                                                                     <option
                                                                                                         value="{{ $list_Grade->id }}">
-                                                                                                        {{ $list_Grade->Name }}
+                                                                                                        {{ $list_Grade->name }}
                                                                                                     </option>
                                                                                                 @endforeach
                                                                                             </select>
