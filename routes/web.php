@@ -46,6 +46,11 @@ Route::group(
     Route::resource('Students', \App\Http\Controllers\Students\StudentController::class);
     Route::get('/Get_classrooms/{id}', [App\Http\Controllers\Students\StudentController::class, 'Get_classrooms'])->name('Get_classrooms');
     Route::get('/Get_Sections/{id}', [App\Http\Controllers\Students\StudentController::class, 'Get_Sections'])->name('Get_Sections');
+    Route::get('Download_attachment/{studentsname}/{filename}', [App\Http\Controllers\Students\StudentController::class, 'Download_attachment'])->name('Download_attachment');
+    Route::post('Upload_attachment', [App\Http\Controllers\Students\StudentController::class, 'Upload_attachment'])->name('Upload_attachment');
+    Route::post('Delete_attachment', [App\Http\Controllers\Students\StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
+
+
 
 });
 

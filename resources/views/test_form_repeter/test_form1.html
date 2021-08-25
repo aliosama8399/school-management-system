@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+    <title>Form</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="bg-wight">
+            <form action="#" method="POST" autocomplete="off" class="form">
+                <div id="form-results"></div>
+                <div class="table-responsive" style="font-size: 18px;">
+                    <table class="table table-bordered">
+                        <h1 class="text-center mt-3 mb-3" style="font-size: 28px; font-weight:bold">فاتورة بيع بالتقسيط
+                        </h1>
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    <div class="row text-right" style="padding: 10px 0;">
+                                        <div class="col-md-2">
+                                            <label for="date">التاريخ</label>
+                                            <input type="date" name="date" class="form-control" id="date" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="client_name">أسم العميل</label>
+                                            <select name="client_name" class="form-control" id="client_name" required>
+                                                <option value="">حدد أسم العميل</option>
+                                                <option value="1">Client Name 1</option>
+                                                <option value="2">Client Name 2</option>
+                                                <option value="3">Client Name 3</option>
+                                                <option value="4">Client Name 4</option>
+                                                <option value="5">Client Name 5</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="check_no">رقم شيك الضمان</label>
+                                            <input type="text" name="check_no" id="check_no" class="form-control">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="check_owner">أسم صاحب الشيك</label>
+                                            <input type="text" name="check_owner" id="check_owner" class="form-control">
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <table id="invoice-item-table" class="table table-bordered text-center">
+                                        <tr>
+                                            <th></th>
+                                            <th colspan="3">بيانات المنتج</th>
+                                            <th colspan="3">المبلغ</th>
+                                            <th rowspan="2">الاجمالي</th>
+                                            <th rowspan="2"></th>
+                                        </tr>
+                                        <tr>
+                                            <th>الرقم</th>
+                                            <th>أسم المنتج</th>
+                                            <th>الكمية</th>
+                                            <th>السعر</th>
+                                            <th>المبلغ المدفوع</th>
+                                            <th>المبلغ بالحروف</th>
+                                            <th>المتبقي عليه</th>
+                                        </tr>
+                                        <tr>
+                                            <td><span id="sr_no">1</span></td>
+                                            <td style="width: 20%;">
+                                                <select name="product[]" id="product1" class="product form-select" required>
+                                                    <option value="">أختر المنتج</option>
+                                                    <option value="1">Product 1</option>
+                                                    <option value="2">Product 2</option>
+                                                    <option value="3">Product 3</option>
+                                                    <option value="4">Product 4</option>
+                                                    <option value="5">Product 5</option>
+                                                    <option value="6">Product 6</option>
+                                                </select>
+                                            </td>
+                                            <td style="width: 7%;">
+                                                <input type="text" name="quantity[]" id="quantity1"
+                                                    class="form-control input-sm quantity" required>
+                                            </td>
+                                            <td style="width: 10%;">
+                                                <input type="text" name="price[]" id="price1"
+                                                    class="form-control input-sm price" required>
+                                            </td>
+                                            <td style="width: 10%;">
+                                                <input type="text" name="craidator[]" id="craidator1"
+                                                    class="form-control input-sm craidator" required>
+                                            </td>
+                                            <td style="width: 23%;">
+                                                <input type="text" name="amount_literally[]" id="amount_literally1"
+                                                    class="form-control input-sm amount_literally" required>
+                                            </td>
+                                            <td style="width: 10%;">
+                                                <input type="text" name="debit[]" id="debit1"
+                                                    class="form-control input-sm debit" readonly required>
+                                            </td>
+                                            <td style="width: 10%;">
+                                                <input type="text" name="total[]" id="total1"
+                                                    class="form-control input-sm total" readonly required>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+
+                                    <div class="row" style="padding: 0;">
+                                        <div class="col-md-3">
+                                            <b>إجالي المبلغ المدفوع : </b>
+                                            <b><span id="final_craidator" style="font-weight: bold; color: green;">
+                                                </span></b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <b>إجمالي  المبلغ المتبقي : </b>
+                                            <b><span id="final_debit" style="font-weight: bold; color: #f00;">
+                                                </span></b>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <b>إجمالي الفاتورة : </b>
+                                            <b><span id="final_total_amt" style="font-weight: bold; color: blue;">
+                                                </span></b>
+                                        </div>
+                                        <div class="text-center col-md-3">
+                                            <button type="button" name="add_row" id="add_row"
+                                                class="btn btn-success btn-xs">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    <input type="hidden" name="total_item" id="total_item" value="1">
+                                    <button type="button" name="create_invoice" id="create_invoice"
+                                        class="btn btn-primary submit-btn" style="font-weight: bold;">إنشاء
+                                        الفاتورة</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/invoice.js"></script>
+</body>
+
+</html>
