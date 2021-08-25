@@ -89,7 +89,7 @@
                                                             for="academic_year">{{trans('Students_trans.Attachments')}}
                                                             : <span class="text-danger">*</span></label>
                                                         <input type="file" accept="image/*" name="photos[]" multiple required>
-                                                        <input type="hidden" name="student_name" value="{{$Student->name}}">
+                                                        <input type="hidden" name="student_name" value="{{$Student->getTranslation('name','ar')}}">
                                                         <input type="hidden" name="student_id" value="{{$Student->id}}">
                                                     </div>
                                                 </div>
@@ -116,7 +116,7 @@
                                                 <tr style='text-align:center;vertical-align:middle'>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$attachment->filename}}</td>
-                                                    <td><img src="{{ URL::to('/attachments/students') }}/{{$Student->name}}/{{$attachment->filename}}" height="100px" width="100px" /></td>
+                                                    <td><img src="{{ URL::to('/attachments/students') }}/{{$Student->getTranslation('name','ar')}}/{{$attachment->filename}}" height="100px" width="100px" /></td>
                                                     <td>{{$attachment->created_at->diffForHumans()}}</td>
                                                     <td colspan="2">
                                                         <a class="btn btn-outline-info btn-sm"
