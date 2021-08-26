@@ -58,16 +58,31 @@
 
                     <!-- students-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#students-menu">
-                            <div class="pull-left"><i class="fas fa-user-graduate"></i></i></i><span
-                                    class="right-nav-text">{{trans('sidebar.students')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('Students.index')}}">{{trans('sidebar.List_students')}} </a> </li>
-                            <li> <a href="{{route('Students.create')}}">{{trans('sidebar.add_student')}} </a> </li>
-                            <li> <a href="{{route('Promotion.index')}}">{{trans('sidebar.Students_Promotions')}} </a> </li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#students-menu"><i class="fas fa-user-graduate"></i>{{trans('sidebar.students')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
+                        <ul id="students-menu" class="collapse">
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#Student_information">{{trans('sidebar.Student_information')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
+                                <ul id="Student_information" class="collapse">
+                                    <li> <a href="{{route('Students.create')}}">{{trans('sidebar.add_student')}}</a></li>
+                                    <li> <a href="{{route('Students.index')}}">{{trans('sidebar.list_students')}}</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#Students_upgrade">{{trans('sidebar.Students_Promotions')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
+                                <ul id="Students_upgrade" class="collapse">
+                                    <li> <a href="{{route('Promotion.index')}}">{{trans('sidebar.add_Promotion')}}</a></li>
+                                    <li> <a href="{{route('Promotion.create')}}">{{trans('sidebar.list_Promotions')}}</a> </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#Graduate students">{{trans('sidebar.Graduate_students')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
+                                <ul id="Graduate students" class="collapse">
+                                    <li> <a href="{{route('Graduated.create')}}">{{trans('sidebar.add_Graduate')}}</a> </li>
+                                    <li> <a href="{{route('Graduated.index')}}">{{trans('sidebar.list_Graduate')}}</a> </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 
@@ -82,7 +97,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Teachers-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('Teachers.index')}}">{{__('sidebar.List_teachers')}} </a> </li>
+                            <li> <a href="{{Route('Teachers.index')}}">{{__('sidebar.List_Teachers')}} </a> </li>
                         </ul>
                     </li>
 
