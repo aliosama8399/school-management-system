@@ -1,20 +1,19 @@
 <!-- Deleted inFormation Student -->
-<div class="modal fade" id="Delete_all" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="promote_one{{$promotion->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel"> {{__('Students_trans.restore_all')}}</h5>
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">{{__('Students_trans.graduate_student')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('Promotion.destroy','test')}}" method="post">
+                <form action="{{route('Promotion.show','test')}}" method="post">
                     @csrf
-                    @method('DELETE')
-
-                    <input type="hidden" name="page_id" value="1">
-                    <h5 style="font-family: 'Cairo', sans-serif;"{{__('Students_trans.restore_all_tilte')}}</h5>
+                    @method('HEAD')
+                    <input type="hidden" name="id" value="{{$promotion->id}}">
+                    <h5 style="font-family: 'Cairo', sans-serif;">{{__('Students_trans.graduate_student_tilte')}}  {{$promotion->student->name}}</h5>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Students_trans.Close')}}</button>
                         <button  class="btn btn-danger">{{trans('Students_trans.submit')}}</button>

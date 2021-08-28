@@ -23,7 +23,7 @@
                             <div class="card-body">
 
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete_all">
-                                    تراجع الكل
+                                    {{__('Students_trans.restore_all')}}
                                 </button>
                                 <br><br>
 
@@ -36,14 +36,14 @@
                                         <tr>
                                             <th class="alert-info">#</th>
                                             <th class="alert-info">{{trans('Students_trans.name')}}</th>
-                                            <th class="alert-danger">المرحلة الدراسية السابقة</th>
-                                            <th class="alert-danger">السنة الدراسية</th>
-                                            <th class="alert-danger">الصف الدراسي السابق</th>
-                                            <th class="alert-danger">القسم الدراسي السابق</th>
-                                            <th class="alert-success">المرحلة الدراسية الحالي</th>
-                                            <th class="alert-success">السنة الدراسية الحالية</th>
-                                            <th class="alert-success">الصف الدراسي الحالي</th>
-                                            <th class="alert-success">القسم الدراسي الحالي</th>
+                                            <th class="alert-danger">{{trans('Students_trans.f_grade')}}</th>
+                                            <th class="alert-danger">{{trans('Students_trans.f_year')}}</th>
+                                            <th class="alert-danger">{{trans('Students_trans.f_class')}}</th>
+                                            <th class="alert-danger">{{trans('Students_trans.f_section')}}</th>
+                                            <th class="alert-success">{{trans('Students_trans.t_grade')}}</th>
+                                            <th class="alert-success">{{trans('Students_trans.t_year')}}</th>
+                                            <th class="alert-success">{{trans('Students_trans.t_class')}}</th>
+                                            <th class="alert-success">{{trans('Students_trans.t_section')}}</th>
                                             <th>{{trans('Students_trans.Processes')}}</th>
                                         </tr>
                                         </thead>
@@ -62,12 +62,14 @@
                                                 <td>{{$promotion->t_section->Name_Section}}</td>
                                                 <td>
 
-                                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#Delete_one{{$promotion->id}}">ارجاع الطالب</button>
-                                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#">تخرج الطالب</button>
+                                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#Delete_one{{$promotion->id}}">{{trans('Students_trans.restore_student')}}</button>
+{{--                                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#promote_one{{$promotion->id}}">{{trans('Students_trans.graduate_student')}}</button>--}}
+                                                    <a  class="btn btn-outline-success"  href="{{route('Promotion.show',$promotion->id)}}">{{trans('Students_trans.graduate_student')}}</a>
                                                 </td>
                                             </tr>
                                         @include('pages.Students.promotion.Delete_all')
                                         @include('pages.Students.promotion.Delete_one')
+{{--                                        @include('pages.Students.promotion.promote_one')--}}
                                         @endforeach
                                     </table>
                                 </div>
