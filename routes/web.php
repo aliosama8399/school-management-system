@@ -52,6 +52,8 @@ Route::group(
 
     Route::resource('Promotion', \App\Http\Controllers\Students\PromotionController::class);
     Route::resource('Graduated', \App\Http\Controllers\Students\GraduatedController::class);
+    Route::resource('Fees', \App\Http\Controllers\Students\FeesController::class);
+    Route::resource('Fees_Invoices', \App\Http\Controllers\Students\FeesInvoicesController::class);
 
 
 });

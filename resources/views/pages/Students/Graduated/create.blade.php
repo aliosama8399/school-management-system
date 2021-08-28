@@ -58,7 +58,7 @@
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary">تاكيد</button>
+                        <button type="submit" class="btn btn-primary">{{__('Students_trans.submit')}}</button>
                     </form>
 
                 </div>

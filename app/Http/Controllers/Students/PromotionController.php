@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
+use App\Models\Promotion;
+use App\Models\Student;
 use App\Repository\StudentPromotionRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -55,7 +57,13 @@ class PromotionController extends Controller
      */
     public function show($id)
     {
-        //
+
+          $prom=Promotion::findorfail($id);
+            student::where('id',$prom->student_id)->Delete();
+        $prom->delete();
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->back();
+
     }
 
     /**

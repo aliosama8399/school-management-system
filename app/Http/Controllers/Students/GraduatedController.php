@@ -25,6 +25,7 @@ class GraduatedController extends Controller
         return $this->Graduated->create();
     }
 
+
     public function store(Request $request)
     {
         return $this->Graduated->SoftDelete($request);
