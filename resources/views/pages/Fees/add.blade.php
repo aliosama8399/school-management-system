@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    اضافة رسوم جديدة
+    {{__('Students_trans.add_fee')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    اضافة رسوم جديدة
+    {{__('Students_trans.add_fee')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -33,18 +33,18 @@
                         @csrf
                         <div class="form-row">
                             <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة العربية</label>
+                                <label for="inputEmail4">{{__('Students_trans.name_ar')}}</label>
                                 <input type="text" value="{{ old('title_ar') }}" name="title_ar" class="form-control">
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة الانجليزية</label>
+                                <label for="inputEmail4">{{__('Students_trans.name_en')}}</label>
                                 <input type="text" value="{{ old('title_en') }}" name="title_en" class="form-control">
                             </div>
 
 
                             <div class="form-group col">
-                                <label for="inputEmail4">المبلغ</label>
+                                <label for="inputEmail4">{{__('Students_trans.amount')}}</label>
                                 <input type="number" value="{{ old('amount') }}" name="amount" class="form-control">
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                         <div class="form-row">
 
                             <div class="form-group col">
-                                <label for="inputState">المرحلة الدراسية</label>
+                                <label for="inputState">{{__('grades.title_page1')}}</label>
                                 <select class="custom-select mr-sm-2" name="Grade_id">
                                     <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                     @foreach($Grades as $Grade)
@@ -63,13 +63,13 @@
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputZip">الصف الدراسي</label>
+                                <label for="inputZip">{{__('My_Classes_trans.title_page1')}}</label>
                                 <select class="custom-select mr-sm-2" name="Classroom_id">
 
                                 </select>
                             </div>
                             <div class="form-group col">
-                                <label for="inputZip">السنة الدراسية</label>
+                                <label for="inputZip">{{__('Students_trans.academic_year')}}</label>
                                 <select class="custom-select mr-sm-2" name="year">
                                     <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                     @php
@@ -82,21 +82,21 @@
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputZip">نوع الرسوم</label>
+                                <label for="inputZip">{{__('Students_trans.fees_type')}}</label>
                                 <select class="custom-select mr-sm-2" name="Fee_type">
-                                    <option value="1">رسوم دراسية</option>
-                                    <option value="2">رسوم باص</option>
+                                    <option value="1">{{__('Students_trans.education')}}</option>
+                                    <option value="2">{{__('Students_trans.bus')}}</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputAddress">ملاحظات</label>
+                            <label for="inputAddress">{{__('grades.Notes')}}</label>
                             <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="4"></textarea>
                         </div>
                         <br>
 
-                        <button type="submit" class="btn btn-primary">تاكيد</button>
+                        <button type="submit" class="btn btn-primary">{{__('grades.submit')}}</button>
 
                     </form>
 

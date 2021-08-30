@@ -39,7 +39,12 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'delete' => 'Delete',
+    'edit' => 'Edit student',
+    'show' => 'Show Student info',
+    'add_fee_Invoice' => 'Add fee Invoice',
     'image' => 'Student photo',
+    'amount' => 'amount',
+
     'delete_student' => 'Delete student',
     'restore_student' => 'Restore student',
     'f_grade' => ' from grade',
@@ -51,6 +56,18 @@ return [
     'f_section' => 'from section',
     't_section' => 'to section',
     'restore_all' => 'restore_all',
+    'fees_type' => 'Fees type',
+    'education' => 'Education Fees',
+    'bus' => 'Bus Fees',
+    'add_fee' => 'add new fee',
+    'edit_fee' => 'edit_fee',
+    'byan' => 'report',
+
+    'add_feeI' => 'add_fee Invoice',
+
+    'edit_feeI' => 'edit_fee Invoice',
+    'del_feeI' => 'delete_fee Invoice',
+    'invoice' => 'Invoices',
 
 
 ];

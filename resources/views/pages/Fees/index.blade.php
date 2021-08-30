@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    الرسوم الدراسية
+    {{__('Students_trans.education')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    الرسوم الدراسية
+    {{__('Students_trans.education')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -22,7 +22,7 @@
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                                 <a href="{{route('Fees.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة رسوم جديدة</a><br><br>
+                                   aria-pressed="true">{{__('Students_trans.add_fee')}}</a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -30,14 +30,14 @@
                                         <thead>
                                         <tr class="alert-success">
                                             <th>#</th>
-                                            <th>الاسم</th>
-                                            <th>المبلغ</th>
-                                            <th>المرحلة الدراسية</th>
-                                            <th>الصف الدراسي</th>
-                                            <th>السنة الدراسية</th>
-                                            <th>نوع الرسوم</th>
-                                            <th>ملاحظات</th>
-                                            <th>العمليات</th>
+                                            <th>{{__('Students_trans.name')}}</th>
+                                            <th>{{__('Students_trans.amount')}}</th>
+                                            <th>{{__('grades.title_page1')}}</th>
+                                            <th>{{__('My_Classes_trans.title_page1')}}</th>
+                                            <th>{{__('Students_trans.academic_year')}}</th>
+                                            <th>{{__('Students_trans.fees_type')}}</th>
+                                            <th>{{__('grades.Notes')}}</th>
+                                            <th>{{__('Students_trans.Processes')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -57,7 +57,7 @@
                                                             class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                             data-toggle="modal" data-target="#Delete_Fee{{ $fee->id }}"
-                                                            title="{{ trans('Grades_trans.Delete') }}"><i
+                                                            title="{{ trans('grades.Delete') }}"><i
                                                             class="fa fa-trash"></i></button>
                                                     <a href="#" class="btn btn-warning btn-sm" role="button"
                                                        aria-pressed="true"><i class="far fa-eye"></i></a>

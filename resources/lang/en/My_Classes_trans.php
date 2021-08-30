@@ -3,6 +3,8 @@
 return [
 
     'title_page' => 'Classes',
+    'title_page1' => 'Classroom',
+
     'List_classes' => 'List Classes',
     'add_class' => 'add class',
     'edit_class'=> 'Edit Row',
