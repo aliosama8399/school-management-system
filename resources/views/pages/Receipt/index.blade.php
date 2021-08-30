@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{__('Students_trans.invoice')}}
+    سندات القبض
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{__('Students_trans.invoice')}}
+   سندات القبض
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -28,31 +28,25 @@
                                         <thead>
                                         <tr class="alert-success">
                                             <th>#</th>
-                                            <th>{{__('Students_trans.name')}}</th>
-                                            <th>{{__('Students_trans.fees_type')}}</th>
-                                            <th>{{__('Students_trans.amount')}}</th>
-                                            <th>{{__('grades.title_page1')}}</th>
-                                            <th>{{__('My_Classes_trans.title_page1')}}</th>
-                                            <th>{{__('Students_trans.byan')}}</th>
-                                            <th>{{__('Students_trans.Processes')}}</th>
+                                            <th>الاسم</th>
+                                            <th>المبلغ</th>
+                                            <th>البيان</th>
+                                            <th>العمليات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($Fee_invoices as $Fee_invoice)
+                                        @foreach($receipt_students as $receipt_student)
                                             <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{$Fee_invoice->student->name}}</td>
-                                            <td>{{$Fee_invoice->fees->title}}</td>
-                                            <td>{{ number_format($Fee_invoice->amount, 2) }}</td>
-                                            <td>{{$Fee_invoice->grade->name}}</td>
-                                            <td>{{$Fee_invoice->classroom->Name_Class}}</td>
-                                            <td>{{$Fee_invoice->description}}</td>
+                                            <td>{{$receipt_student->student->name}}</td>
+                                            <td>{{ number_format($receipt_student->Debit, 2) }}</td>
+                                            <td>{{$receipt_student->description}}</td>
                                                 <td>
-                                                    <a href="{{route('Fees_Invoices.edit',$Fee_invoice->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>     </td>
+                                                    <a href="{{route('receipt_students.edit',$receipt_student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$receipt_student->id}}" ><i class="fa fa-trash"></i></button>
+                                                </td>
                                             </tr>
-                                        @include('pages.Fees_Invoices.Delete')
-
+                                        @include('pages.Receipt.Delete')
                                         @endforeach
                                     </table>
                                 </div>

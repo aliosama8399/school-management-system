@@ -114,4 +114,8 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
         }
     }
 
+    public function Get_amount($id)
+    {
+        // TODO: Implement Get_amount() method.
+    }
 }

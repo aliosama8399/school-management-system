@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    تعديل رسوم دراسية
+{{__('Students_trans.edit_fee')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    تعديل رسوم دراسية
+    {{__('Students_trans.edit_fee')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -34,19 +34,19 @@
                         @csrf
                         <div class="form-row">
                             <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة العربية</label>
+                                <label for="inputEmail4">{{__('Students_trans.name_ar')}}</label>
                                 <input type="text" value="{{$fee->getTranslation('title','ar')}}" name="title_ar" class="form-control">
                                 <input type="hidden" value="{{$fee->id}}" name="id" class="form-control">
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة الانجليزية</label>
+                                <label for="inputEmail4">{{__('Students_trans.name_en')}}</label>
                                 <input type="text" value="{{$fee->getTranslation('title','en')}}" name="title_en" class="form-control">
                             </div>
 
 
                             <div class="form-group col">
-                                <label for="inputEmail4">المبلغ</label>
+                                <label for="inputEmail4">{{__('Students_trans.amount')}}</label>
                                 <input type="number" value="{{$fee->amount}}" name="amount" class="form-control">
                             </div>
 
@@ -56,7 +56,7 @@
                         <div class="form-row">
 
                             <div class="form-group col">
-                                <label for="inputState">المرحلة الدراسية</label>
+                                <label for="inputState">{{__('grades.title_page1')}}</label>
                                 <select class="custom-select mr-sm-2" name="Grade_id">
                                     @foreach($Grades as $Grade)
                                         <option value="{{ $Grade->id }}" {{$Grade->id == $fee->Grade_id ? 'selected' : ""}}>{{ $Grade->name }}</option>
@@ -65,13 +65,13 @@
                             </div>
 
                             <div class="form-group col">
-                                <label for="inputZip">الصف الدراسي</label>
+                                <label for="inputZip">{{__('My_Classes_trans.title_page1')}}</label>
                                 <select class="custom-select mr-sm-2" name="Classroom_id">
                                     <option value="{{$fee->Classroom_id}}">{{$fee->classroom->Name_Class}}</option>
                                 </select>
                             </div>
                             <div class="form-group col">
-                                <label for="inputZip">السنة الدراسية</label>
+                                <label for="inputZip">{{__('Students_trans.academic_year')}}</label>
                                 <select class="custom-select mr-sm-2" name="year">
                                     @php
                                         $current_year = date("Y")
@@ -84,13 +84,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputAddress">ملاحظات</label>
+                            <label for="inputAddress">{{__('grades.Notes')}}</label>
                             <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
                                       rows="4">{{$fee->description}}</textarea>
                         </div>
                         <br>
 
-                        <button type="submit" class="btn btn-primary">تاكيد</button>
+                        <button type="submit" class="btn btn-primary">{{__('grades.submit')}}</button>
 
                     </form>
 
