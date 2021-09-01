@@ -67,12 +67,15 @@ return [
     'del_feeI' => ' حذف فاتورة دراسية',
     'invoice' => 'الفواتير الدراسية',
     'receipt' => 'سند قبض',
+    'payment' => 'سند صرف',
     'process_fee' => 'استبعاد رسوم',
     'edit_process_fee' => 'تعديل استبعاد رسوم ',
     'del_process_fee' => 'حذف استبعاد رسوم ',
     'process_fees' => 'معالجات الرسوم الدراسية',
     'edit_receipt' => 'سند قبض',
+    'edit_payment' => 'تعديل سند صرف',
     'all_receipt' => 'سندات القبض',
+    'all_payment' => 'سندات الصرف',
     'del_receipt' => 'حذف سند القبض',
 
 

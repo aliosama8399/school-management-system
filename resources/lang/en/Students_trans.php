@@ -79,6 +79,9 @@ return [
     'process_fees' => 'Process fees',
     'edit_process_fee' => 'edit_process_fee',
     'del_process_fee' => 'delete_process_fee ',
+    'edit_payment' => 'edit_payment',
+    'all_payment' => 'all_payments',
+    'payment' => 'Student payment',
 
 
 ];
