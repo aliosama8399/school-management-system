@@ -55,6 +55,8 @@ Route::group(
     Route::resource('Fees', \App\Http\Controllers\Students\FeesController::class);
     Route::resource('Fees_Invoices', \App\Http\Controllers\Students\FeesInvoicesController::class);
     Route::resource('receipt_students', \App\Http\Controllers\Students\ReceiptStudentsController::class);
+    Route::resource('ProcessingFee', \App\Http\Controllers\Students\ProcessingFeeController::class);
+
 
 
 

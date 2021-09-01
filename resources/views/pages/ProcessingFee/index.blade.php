@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{trans('Students_trans.all_receipt')}}
+    {{trans('Students_trans.process_fees')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{trans('Students_trans.all_receipt')}}
+    {{trans('Students_trans.process_fees')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -29,24 +29,29 @@
                                         <tr class="alert-success">
                                             <th>#</th>
                                             <th>{{trans('Students_trans.name')}}</th>
-                                            <th>{{trans('Students_trans.amount')}}</th>
-                                            <th>{{trans('Students_trans.byan')}}</th>
+                                            <th>  {{trans('Students_trans.amount')}}</th>
+                                            <th>  {{trans('Students_trans.byan')}}</th>
                                             <th>{{trans('Students_trans.Processes')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($receipt_students as $receipt_student)
+                                        @foreach($ProcessingFees as $ProcessingFee)
                                             <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{$receipt_student->student->name}}</td>
-                                            <td>{{ number_format($receipt_student->Debit, 2) }}</td>
-                                            <td>{{$receipt_student->description}}</td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{$ProcessingFee->student->name}}</td>
+                                                <td>{{ number_format($ProcessingFee->amount, 2) }}</td>
+                                                <td>{{$ProcessingFee->description}}</td>
                                                 <td>
-                                                    <a href="{{route('receipt_students.edit',$receipt_student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$receipt_student->id}}" ><i class="fa fa-trash"></i></button>
+                                                    <a href="{{route('ProcessingFee.edit',$ProcessingFee->id)}}"
+                                                       class="btn btn-info btn-sm" role="button" aria-pressed="true"><i
+                                                            class="fa fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#Delete_receipt{{$ProcessingFee->id}}"><i
+                                                            class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
-                                        @include('pages.Receipt.Delete')
+                                        @include('pages.ProcessingFee.Delete')
                                         @endforeach
                                     </table>
                                 </div>

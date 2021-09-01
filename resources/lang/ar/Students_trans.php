@@ -42,6 +42,7 @@ return [
     'add_fee_Invoice' => 'اضافة رسوم للطالب',
     'image' => 'صورة الطالب',
     'amount' => 'المبلغ',
+    'amount_student' => 'رصيد الطالب',
     'delete_student' => 'حذف الطالب',
     'restore_student' => 'ارجاع الطالب',
     'graduate_student' => 'تخرج الطالب',
@@ -65,6 +66,15 @@ return [
     'edit_feeI' => ' تعديل فاتورة دراسية',
     'del_feeI' => ' حذف فاتورة دراسية',
     'invoice' => 'الفواتير الدراسية',
+    'receipt' => 'سند قبض',
+    'process_fee' => 'استبعاد رسوم',
+    'edit_process_fee' => 'تعديل استبعاد رسوم ',
+    'del_process_fee' => 'حذف استبعاد رسوم ',
+    'process_fees' => 'معالجات الرسوم الدراسية',
+    'edit_receipt' => 'سند قبض',
+    'all_receipt' => 'سندات القبض',
+    'del_receipt' => 'حذف سند القبض',
+
 
 
 
