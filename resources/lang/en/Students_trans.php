@@ -68,6 +68,17 @@ return [
     'edit_feeI' => 'edit_fee Invoice',
     'del_feeI' => 'delete_fee Invoice',
     'invoice' => 'Invoices',
+    'receipt' => 'receipt',
+    'edit_receipt' => 'Edit receipt',
+    'all_receipt' => 'All receipts',
+    'del_receipt' => 'Delete Receipt',
+
+    'amount_student' => 'Student credit',
+
+    'process_fee' => 'process_fee',
+    'process_fees' => 'Process fees',
+    'edit_process_fee' => 'edit_process_fee',
+    'del_process_fee' => 'delete_process_fee ',
 
 
 ];

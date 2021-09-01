@@ -14,7 +14,7 @@ class AddReceiptIdToStudentsTable extends Migration
     public function up()
     {
         Schema::table('student_accounts', function (Blueprint $table) {
-            $table->foreignId('receipt_id')->nullable()->references('id')->on('receipt_students')->onDelete('cascade');
+            $table->foreignId('processing_id')->nullable()->references('id')->on('processing_fees')->onDelete('cascade');
 
         });
     }

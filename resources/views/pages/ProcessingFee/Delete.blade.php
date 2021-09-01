@@ -1,18 +1,18 @@
 <!-- Deleted inFormation Student -->
-<div class="modal fade" id="Delete_receipt{{$receipt_student->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Delete_receipt{{$ProcessingFee->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">{{trans('Students_trans.del_receipt')}}</h5>
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel"> {{trans('Students_trans.del_process_fee')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('receipt_students.destroy','test')}}" method="post">
+                <form action="{{route('ProcessingFee.destroy','test')}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <input type="hidden" name="id" value="{{$receipt_student->id}}">
+                    <input type="hidden" name="id" value="{{$ProcessingFee->id}}">
                     <h5 style="font-family: 'Cairo', sans-serif;">{{trans('grades.Warning_Grade')}}</h5>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Students_trans.Close')}}</button>
