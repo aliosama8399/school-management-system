@@ -7,6 +7,8 @@ use App\Repository\FeeInvoicesRepository;
 use App\Repository\FeeInvoicesRepositoryInterface;
 use App\Repository\FeesRepository;
 use App\Repository\FeesRepositoryInterface;
+use App\Repository\PaymentRepository;
+use App\Repository\PaymentRepositoryInterface;
 use App\Repository\ProcessingFeeRepository;
 use App\Repository\ProcessingFeeRepositoryInterface;
 use App\Repository\ReceiptStudentsRepository;
@@ -38,6 +40,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(FeeInvoicesRepositoryInterface::class, FeeInvoicesRepository::class);
         $this->app->bind(ReceiptStudentsRepositoryInterface::class, ReceiptStudentsRepository::class);
         $this->app->bind(ProcessingFeeRepositoryInterface::class, ProcessingFeeRepository::class);
+        $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
 
 
 
