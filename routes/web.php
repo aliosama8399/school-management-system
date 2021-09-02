@@ -58,6 +58,8 @@ Route::group(
     Route::resource('ProcessingFee', \App\Http\Controllers\Students\ProcessingFeeController::class);
     Route::resource('Payment_students', \App\Http\Controllers\Students\PaymentController::class);
     Route::resource('Attendance', \App\Http\Controllers\Students\AttendanceController::class);
+   ################################################################################################################################################################
+    Route::resource('subjects', \App\Http\Controllers\Subjects\SubjectController::class);
 
 
 

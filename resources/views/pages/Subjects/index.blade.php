@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{trans('sidebar.List_Teachers')}}
+    {{trans('subject.subjects_list')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{trans('sidebar.List_Teachers')}}
+    {{trans('subject.subjects_list')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -21,8 +21,9 @@
                     <div class="col-xl-12 mb-30">
                         <div class="card card-statistics h-100">
                             <div class="card-body">
-                                <a href="{{route('Teachers.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">{{ trans('Teacher_trans.Add_Teacher') }}</a><br><br>
+                                <a href="{{route('subjects.create')}}" class="btn btn-success btn-sm" role="button"
+                                   aria-pressed="true">    {{trans('subject.subjects_add')}}
+                                </a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -30,44 +31,42 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>{{trans('subject.subjects_name')}}</th>
+                                            <th>{{trans('grades.title_page1')}}</th>
+                                            <th>{{trans('My_Classes_trans.title_page1')}}</th>
                                             <th>{{trans('Teacher_trans.Name_Teacher')}}</th>
-                                            <th>{{trans('Teacher_trans.Gender')}}</th>
-                                            <th>{{trans('Teacher_trans.Joining_Date')}}</th>
-                                            <th>{{trans('Teacher_trans.specialization')}}</th>
-                                            <th>العمليات</th>
+                                            <th>{{trans('My_Classes_trans.Processes')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i = 0; ?>
-                                        @foreach($Teachers as $Teacher)
+                                        @foreach($subjects as $subject)
                                             <tr>
-                                            <?php $i++; ?>
-                                            <td>{{ $i }}</td>
-                                            <td>{{$Teacher->Name}}</td>
-                                            <td>{{$Teacher->genders->Name}}</td>
-                                            <td>{{$Teacher->Joining_Date}}</td>
-                                            <td>{{$Teacher->specializations->Name}}</td>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$subject->name}}</td>
+                                            <td>{{$subject->grade->name}}</td>
+                                            <td>{{$subject->classroom->Name_Class}}</td>
+                                            <td>{{$subject->teacher->Name}}</td>
                                                 <td>
-                                                    <a href="{{route('Teachers.edit',$Teacher->id)}}" class="btn btn-info btn-sm" role="button" title="{{ trans('grades.Edit') }}" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Teacher{{ $Teacher->id }}" title="{{ trans('grades.Delete') }}"><i class="fa fa-trash"></i></button>
+                                                    <a href="{{route('subjects.edit',$subject->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_subject{{ $subject->id }}" title=""><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
 
-                                            <div class="modal fade" id="delete_Teacher{{$Teacher->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="delete_subject{{$subject->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
-                                                    <form action="{{route('Teachers.destroy','test')}}" method="post">
+                                                    <form action="{{route('subjects.destroy','test')}}" method="post">
                                                         {{method_field('delete')}}
                                                         {{csrf_field()}}
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">{{ trans('Teacher_trans.Delete_Teacher') }}</h5>
+                                                            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">{{trans('subject.subjects_del')}}</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p> {{ trans('Sections_trans.Warning_Section') }}</p>
-                                                            <input type="hidden" name="id"  value="{{$Teacher->id}}">
+                                                            <p> {{ trans('My_Classes_trans.Warning_class') }} {{$subject->name}}</p>
+                                                            <input type="hidden" name="id"  value="{{$subject->id}}">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="modal-footer">
