@@ -60,7 +60,8 @@ Route::group(
     Route::resource('Attendance', \App\Http\Controllers\Students\AttendanceController::class);
    ################################################################################################################################################################
     Route::resource('subjects', \App\Http\Controllers\Subjects\SubjectController::class);
-
+#############################################################################################################################################################################
+    Route::resource('Exams', \App\Http\Controllers\Exams\ExamController::class);
 
 
 
