@@ -64,6 +64,8 @@ Route::group(
     Route::resource('Exams', \App\Http\Controllers\Exams\ExamController::class);
 ####################################################################################################################################
     Route::resource('Quizzes', \App\Http\Controllers\Quizzes\QuizzController::class);
+ ##############################################################################################################################################
+    Route::resource('questions', \App\Http\Controllers\questions\QuestionController::class);
 
 
 
