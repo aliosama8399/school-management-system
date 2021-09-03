@@ -3,6 +3,8 @@
 return [
 
     'subjects'=>'Subjects',
+    'subject'=>'Subject',
+
     'subjects_list'=>'Subjects list',
     'subjects_add'=>'Subjects add',
     'subjects_edit'=>'ubjects_edit',

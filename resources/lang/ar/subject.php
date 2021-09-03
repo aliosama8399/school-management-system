@@ -3,6 +3,7 @@
 return [
 
     'subjects'=>'المواد الدراسية',
+    'subject'=>'المادة الدراسية',
     'subjects_list'=>'قائمة المواد الدراسية',
     'subjects_add'=>'اضافة مادة جديدة',
     'subjects_edit'=>'تعديل مادة جديدة',
