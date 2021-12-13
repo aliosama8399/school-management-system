@@ -8,12 +8,14 @@
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{trans('Students_trans.receipt')}} {{$student->name}}
+    {{trans('Students_trans.receipt')}}
+        {{$student->name}}
 @stop
 <!-- breadcrumb -->
 @endsection
 @section('content')
     <!-- row -->
+
     <div class="row">
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
@@ -28,6 +30,9 @@
                             </ul>
                         </div>
                     @endif
+
+
+
 
                         <form method="post"  action="{{ route('receipt_students.store') }}" autocomplete="off">
                             @csrf

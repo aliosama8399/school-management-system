@@ -58,7 +58,8 @@ Route::group(
     Route::resource('ProcessingFee', \App\Http\Controllers\Students\ProcessingFeeController::class);
     Route::resource('Payment_students', \App\Http\Controllers\Students\PaymentController::class);
     Route::resource('Attendance', \App\Http\Controllers\Students\AttendanceController::class);
-   ################################################################################################################################################################
+    Route::resource('online_classes', \App\Http\Controllers\Students\OnlineClasseController::class);
+    ################################################################################################################################################################
     Route::resource('subjects', \App\Http\Controllers\Subjects\SubjectController::class);
 #############################################################################################################################################################################
     Route::resource('Exams', \App\Http\Controllers\Exams\ExamController::class);
@@ -66,6 +67,7 @@ Route::group(
     Route::resource('Quizzes', \App\Http\Controllers\Quizzes\QuizzController::class);
  ##############################################################################################################################################
     Route::resource('questions', \App\Http\Controllers\questions\QuestionController::class);
+    ##############################################################################################################################################
 
 
 
