@@ -59,6 +59,9 @@ Route::group(
     Route::resource('Payment_students', \App\Http\Controllers\Students\PaymentController::class);
     Route::resource('Attendance', \App\Http\Controllers\Students\AttendanceController::class);
     Route::resource('online_classes', \App\Http\Controllers\Students\OnlineClasseController::class);
+
+    Route::get('/indirect',  [App\Http\Controllers\Students\OnlineClasseController::class, 'indirectCreate'])->name('indirect.create');
+    Route::post('/indirect', [App\Http\Controllers\Students\OnlineClasseController::class, 'storeIndirect'])->name('indirect.store');
     ################################################################################################################################################################
     Route::resource('subjects', \App\Http\Controllers\Subjects\SubjectController::class);
 #############################################################################################################################################################################
