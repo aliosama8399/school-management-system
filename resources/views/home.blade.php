@@ -13,9 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
+                        <a href="{{$asd}}">Payment Link</a>
+                    </div>
             </div>
         </div>
     </div>

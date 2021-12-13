@@ -20,6 +20,7 @@
             <div class="card-body">
                 asdsad
                 <livewire:counter />
+
                 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
             </div>
         </div>

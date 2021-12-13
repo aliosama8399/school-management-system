@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Http\Controllers\FatoorahController;
 use App\Models\FundAccount;
 use App\Models\ReceiptStudent;
 use App\Models\Student;
@@ -35,6 +36,9 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
     public function store($request)
     {
+
+
+
         DB::beginTransaction();
 
         try {
@@ -68,6 +72,8 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $fund_accounts->save();
 
             DB::commit();
+//            return redirect()->route('pay', ['id' => $request->student_id,'debit'=>$request->Debit]);
+
             toastr()->success(trans('messages.success'));
             return redirect()->route('receipt_students.index');
 
