@@ -8,6 +8,7 @@ use GradeSeeder;
 use Illuminate\Database\Seeder;
 use ParentsTableSeeder;
 use SectionsTableSeeder;
+use Database\Seeders\SettingsTableSeeder;
 use StudentsTableSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -31,5 +32,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SectionsTableSeeder::class);
         $this->call(ParentsTableSeeder::class);
         $this->call(StudentsTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
     }
 }

@@ -72,6 +72,7 @@ Route::group(
  ##############################################################################################################################################
     Route::resource('questions', \App\Http\Controllers\questions\QuestionController::class);
     ##############################################################################################################################################
+    Route::resource('settings', \App\Http\Controllers\SettingController::class);
 
 
 
