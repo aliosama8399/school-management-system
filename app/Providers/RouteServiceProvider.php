@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    use \Mcamara\LaravelLocalization\Traits\LoadsTranslatedCachedRoutes;
     /**
      * This namespace is applied to your controller routes.
      *
@@ -24,8 +25,8 @@ class RouteServiceProvider extends ServiceProvider
 
     public const HOME = '/dashboard';
     public const STUDENT = '/student/dashboard';
-    public const TEACHER = '/teacher/dashboard';
-    public const PARENT = '/parent/dashboard';
+    public const TEACHER = '/dashboard';
+    public const PARENT = '/dashboard';
 
     /**
      * Define your route model bindings, pattern filters, etc.
