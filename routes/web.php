@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,20 +14,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
-Route::group(['middleware' => ['guest']], function () {
-    Route::get('/', function () {
-        return view('auth.login');
-    });
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('selection');
+
+Route::group(['namespace' => 'Auth'], function () {
+
+    Route::get('/login/{type}', [App\Http\Controllers\Auth\LoginController::class, 'loginForm'])->middleware('guest')->name('login.show');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+
+
 
 });
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
     ], function () { //...
+
 
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
     Route::resource('Grades', \App\Http\Controllers\Grades\GradeController::class);

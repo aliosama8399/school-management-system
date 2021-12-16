@@ -11,22 +11,43 @@ class RedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  ...$guards
-     * @return mixed
+     * @param $request
+     * @param Closure $next
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle( $request, Closure $next)
     {
-        $guards = empty($guards) ? [null] : $guards;
+        if (auth('web')->check()) {
+            return redirect(RouteServiceProvider::HOME);
+        }
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+        if (auth('student')->check()) {
+            return redirect(RouteServiceProvider::STUDENT);
+        }
+
+        if (auth('teacher')->check()) {
+            return redirect(RouteServiceProvider::TEACHER);
+        }
+
+        if (auth('parent')->check()) {
+            return redirect(RouteServiceProvider::PARENT);
         }
 
         return $next($request);
+
+
+
+
+
+//        $guards = empty($guards) ? [null] : $guards;
+//
+//        foreach ($guards as $guard) {
+//            if (Auth::guard($guard)->check()) {
+//                return redirect(RouteServiceProvider::HOME);
+//            }
+//        }
+//
+//        return $next($request);
+
     }
 }
