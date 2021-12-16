@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @section('title')
-{{trans('main_trans.Main_title')}}
+{{trans('sidebar.Main_title')}}
 @stop
 <head>
     <meta charset="utf-8">
