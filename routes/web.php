@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Teachers\TeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,7 +48,7 @@ Route::group(
 ################################################################################################################################################################
     Route::view('add_parent','livewire.show_Form')->name('add_parent');
 #############################################################################################################################################################
-    Route::resource('Teachers', \App\Http\Controllers\Teachers\TeacherController::class);
+    Route::resource('Teachers', TeacherController::class);
 #################################################################################################################
     Route::resource('Students', \App\Http\Controllers\Students\StudentController::class);
     Route::get('/Get_classrooms/{id}', [App\Http\Controllers\Students\StudentController::class, 'Get_classrooms'])->name('Get_classrooms');
