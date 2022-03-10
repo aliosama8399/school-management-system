@@ -34,6 +34,9 @@ Route::group(
     Route::group(['namespace' => 'Teachers\dashboard'], function () {
         //==============================students============================
         Route::get('student',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'index'])->name('students.index');
+        Route::get('sections',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'sections'])->name('sections');
+        Route::post('attendance',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'attendance'])->name('attendance');
+        Route::post('edit_attendance',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'editAttendance'])->name('attendance.edit');
 
     });
 
