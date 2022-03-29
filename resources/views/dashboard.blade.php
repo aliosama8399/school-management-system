@@ -301,11 +301,8 @@ preloader -->
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$section->invoice_date}}</td>
-                                                    <td>{{$section->student->name}}</td>
                                                     <td>{{$section->grade->name}}</td>
                                                     <td>{{$section->classroom->Name_Class}}</td>
-                                                    <td>{{$section->fees->title}}</td>
-                                                    <td>{{ number_format($section->amount, 2) }}</td>
                                                     <td class="text-success">{{$section->created_at}}</td>
                                                 </tr>
                                             @empty
