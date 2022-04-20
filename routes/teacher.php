@@ -37,6 +37,8 @@ Route::group(
         Route::get('sections',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'sections'])->name('sections');
         Route::post('attendance',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'attendance'])->name('attendance');
         Route::post('edit_attendance',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'editAttendance'])->name('attendance.edit');
+        Route::get('attendance_report',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'attendanceReport'])->name('attendance.report');
+        Route::post('attendance_search',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'attendanceSearch'])->name('attendance.search');
 
     });
 
