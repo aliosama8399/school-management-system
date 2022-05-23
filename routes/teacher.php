@@ -45,5 +45,6 @@ Route::group(
 
     });
     Route::resource('quizzes', QuizzController::class);
+    Route::resource('questions', \App\Http\Controllers\Teachers\dashboard\QuestionController::class);
 
     });
