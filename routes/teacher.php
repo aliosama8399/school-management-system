@@ -40,8 +40,8 @@ Route::group(
         Route::post('edit_attendance',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'editAttendance'])->name('attendance.edit');
         Route::get('attendance_report',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'attendanceReport'])->name('attendance.report');
         Route::post('attendance_search',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'attendanceSearch'])->name('attendance.search');
-        Route::get('/Get_classrooms/{id}', [App\Http\Controllers\Students\StudentController::class, 'Get_classrooms'])->name('Get_classrooms');
-        Route::get('/Get_Sections/{id}', [App\Http\Controllers\Students\StudentController::class, 'Get_Sections'])->name('Get_Sections');
+//        Route::get('/Get_classrooms/{id}', [App\Http\Controllers\Students\StudentController::class, 'Get_classrooms'])->name('Get_classrooms');
+//        Route::get('/Get_Sections/{id}', [App\Http\Controllers\Students\StudentController::class, 'Get_Sections'])->name('Get_Sections');
 
     });
     Route::resource('quizzes', QuizzController::class);
