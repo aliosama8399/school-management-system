@@ -37,15 +37,17 @@ preloader -->
 
     <!--=================================
 login-->
-
-    @if(session()->has('error'))
+    @if ($errors->any())
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{ session()->get('error') }}</strong>
+
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-
-
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times; <ul>
+                    @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                </ul></span>
             </button>
+
         </div>
     @endif
     <section class="height-100vh d-flex align-items-center page-section-ptb login"
@@ -64,6 +66,7 @@ login-->
                         </ul>
                     </div>
                 </div>
+
 
                 <div class="col-lg-4 col-md-6 bg-white">
                     <div class="login-fancy pb-40 clearfix">
