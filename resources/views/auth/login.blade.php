@@ -8,7 +8,7 @@
     <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>برنامج مورا سوفت لادارة المدارس</title>
+    <title>برنامج علي أسامة لادارة المدارس</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -38,6 +38,16 @@ preloader -->
     <!--=================================
 login-->
 
+    @if(session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ session()->get('error') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <section class="height-100vh d-flex align-items-center page-section-ptb login"
              style="background-image: url('{{ asset('assets/images/sativa.png')}}');">
         <div class="container">
@@ -54,6 +64,7 @@ login-->
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-6 bg-white">
                     <div class="login-fancy pb-40 clearfix">
                         @if($type == 'student')

@@ -43,6 +43,10 @@ class LoginController extends Controller
             return $this->redirect($request);
         }
 
+        else{
+            return redirect()->back()->withErrors(['error' =>'invalid pass']);
+        }
+
     }
 
     public function logout(Request $request,$type)
