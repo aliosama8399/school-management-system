@@ -4,13 +4,13 @@
         <li>
             <a href="{{ url('/dashboard') }}">
                 <div class="pull-left"><i class="ti-home"></i><span
-                        class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
+                        class="right-nav-text">{{trans('sidebar.Dashboard')}}</span>
                 </div>
                 <div class="clearfix"></div>
             </a>
         </li>
         <!-- menu title -->
-        <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{trans('main_trans.Programname')}} </li>
+        <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{trans('sidebar.Programname')}} </li>
 
 
         <!-- الامتحانات-->
