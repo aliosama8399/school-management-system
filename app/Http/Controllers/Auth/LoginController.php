@@ -44,7 +44,7 @@ class LoginController extends Controller
         }
 
         else{
-            return redirect()->back()->withErrors(['error' =>'invalid pass']);
+            return redirect()->back()->with('message', 'يوجد خطا في كلمة المرور او اسم المستخدم');
         }
 
     }

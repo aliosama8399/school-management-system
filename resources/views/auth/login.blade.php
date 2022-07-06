@@ -37,19 +37,7 @@ preloader -->
 
     <!--=================================
 login-->
-    @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times; <ul>
-                    @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                </ul></span>
-            </button>
-
-        </div>
-    @endif
     <section class="height-100vh d-flex align-items-center page-section-ptb login"
              style="background-image: url('{{ asset('assets/images/sativa.png')}}');">
         <div class="container">
@@ -80,6 +68,13 @@ login-->
                             <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول ادمن</h3>
                         @endif
                         <form method="POST" action="{{route('login')}}">
+
+                            @if (\Session::has('message'))
+                                <div class="alert alert-danger">
+                                    <li>{!! \Session::get('message') !!}</li>
+                                </div>
+                            @endif
+
                             @csrf
 
                             <div class="section-field mb-20">
