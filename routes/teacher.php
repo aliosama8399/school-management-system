@@ -42,7 +42,9 @@ Route::group(
         Route::post('attendance_search',  [App\Http\Controllers\Teachers\dashboard\StudentController::class, 'attendanceSearch'])->name('attendance.search');
 
         Route::get('/indirect',  [App\Http\Controllers\Teachers\dashboard\OnlineZoomClassesController::class, 'indirectCreate'])->name('indirect.teacher.create');
+        Route::get('/profile',  [App\Http\Controllers\Teachers\dashboard\ProfileController::class, 'index'])->name('profile.show');
         Route::post('/indirect',  [App\Http\Controllers\Teachers\dashboard\OnlineZoomClassesController::class, 'storeIndirect'])->name('indirect.teacher.store');
+        Route::post('/profile/{id}',  [App\Http\Controllers\Teachers\dashboard\ProfileController::class, 'update'])->name('profile.update');
 
 
     });
