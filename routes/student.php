@@ -27,4 +27,8 @@ Route::group(
         return view('pages.Students.dashboard');
     });
 
+    Route::group(['Student/dashboard'], function () {
+        Route::resource('student_exams', \App\Http\Controllers\Students\dashboard\ExamsController::class);
+
+    });
 });
