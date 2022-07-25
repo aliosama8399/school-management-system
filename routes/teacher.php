@@ -46,6 +46,9 @@ Route::group(
         Route::post('/indirect',  [App\Http\Controllers\Teachers\dashboard\OnlineZoomClassesController::class, 'storeIndirect'])->name('indirect.teacher.store');
         Route::post('/profile/{id}',  [App\Http\Controllers\Teachers\dashboard\ProfileController::class, 'update'])->name('profile.update');
 
+        Route::get('/student_quizze/{id}',  [App\Http\Controllers\Teachers\dashboard\QuizzController::class, 'student_quizze'])->name('student.quizze');
+        Route::post('/repeat_quizze',  [App\Http\Controllers\Teachers\dashboard\QuizzController::class, 'repeat_quizze'])->name('repeat.quizze');
+
 
     });
     Route::resource('quizzes', QuizzController::class);
