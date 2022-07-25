@@ -25,10 +25,12 @@ Route::group(
     //==============================dashboard============================
     Route::get('/student/dashboard', function () {
         return view('pages.Students.dashboard');
-    });
+    })->name('dashoard.Student');
 
     Route::group(['Student/dashboard'], function () {
         Route::resource('student_exams', \App\Http\Controllers\Students\dashboard\ExamsController::class);
+        Route::resource('profile-student', \App\Http\Controllers\Students\dashboard\ProfileController::class);
 
     });
+
 });
