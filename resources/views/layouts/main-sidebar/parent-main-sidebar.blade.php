@@ -15,9 +15,21 @@
 
         <!-- الامتحانات-->
         <li>
-            <a href="{{route('student_exams.index')}}"><i class="fas fa-book-open"></i><span
+            <a href="{{route('sons.index')}}"><i class="fas fa-book-open"></i><span
                     class="right-nav-text">الابناء</span></a>
         </li>
+        <!-- تقرير الحضور والغياب-->
+        <li>
+            <a href="{{route('student_exams.index')}}"><i class="fas fa-book-open"></i><span
+                    class="right-nav-text">تقرير الحضور والغياب</span></a>
+        </li>
+
+        <!-- تقرير المالية-->
+        <li>
+            <a href="{{route('student_exams.index')}}"><i class="fas fa-book-open"></i><span
+                    class="right-nav-text">تقرير المالية</span></a>
+        </li>
+
 
 
         <!-- Settings-->
