@@ -32,6 +32,8 @@ Route::group(
         Route::get('results/{id}', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'results'])->name('sons.results');
         Route::get('attendances', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'attendances'])->name('sons.attendances');
         Route::post('attendances', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'attendanceSearch'])->name('sons.attendance.search');
+        Route::get('fees', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'fees'])->name('sons.fees');
+        Route::get('receipt/{id}', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'receiptStudent'])->name('sons.receipt');
 
     });
 
