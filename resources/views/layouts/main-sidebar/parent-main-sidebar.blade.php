@@ -26,7 +26,7 @@
 
         <!-- تقرير المالية-->
         <li>
-            <a href="{{route('student_exams.index')}}"><i class="fas fa-book-open"></i><span
+            <a href="{{route('sons.fees')}}"><i class="fas fa-book-open"></i><span
                     class="right-nav-text">تقرير المالية</span></a>
         </li>
 
