@@ -30,6 +30,8 @@ Route::group(
     Route::group(['namespace' => 'Parents\dashboard'], function () {
         Route::get('children', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'index'])->name('sons.index');
         Route::get('results/{id}', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'results'])->name('sons.results');
+        Route::get('attendances', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'attendances'])->name('sons.attendances');
+        Route::post('attendances', [App\Http\Controllers\Parents\dashboard\ChildrenController::class, 'attendanceSearch'])->name('sons.attendance.search');
 
     });
 
